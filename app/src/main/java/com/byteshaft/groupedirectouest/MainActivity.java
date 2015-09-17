@@ -23,10 +23,9 @@ public class MainActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mWebView = (WebView) findViewById(R.id.web_view);
-        mWebView.addJavascriptInterface(new);
 //        mWebView.getSettings().setJavaScriptEnabled(true);
-//        mWebView.setWebViewClient(new CustomWebViewClient());
-//        mWebView.getSettings().setUserAgentString("Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.63 Safari/537.31 Mobile Safari/534.30");
+        mWebView.setWebViewClient(new CustomWebViewClient());
+        mWebView.getSettings().setUserAgentString("AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
         mWebView.loadUrl("http://groupedirectouest.com");
     }
 }
