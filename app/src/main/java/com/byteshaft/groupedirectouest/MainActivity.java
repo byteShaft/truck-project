@@ -1,40 +1,102 @@
 package com.byteshaft.groupedirectouest;
 
-import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.webkit.WebView;
-import android.webkit.WebViewClient;
-import android.widget.ProgressBar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.AppCompatActivity;
 
-public class MainActivity extends Activity {
+import com.byteshaft.groupedirectouest.fragments.MainTab;
+import com.byteshaft.groupedirectouest.fragments.WebViewFragment;
 
-    private WebView mWebView;
+public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
+
+    private PagerAdapter mDemoCollectionPagerAdapter;
+    private ViewPager mViewPager;
+    private Fragment mFragment;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mWebView = (WebView) findViewById(R.id.web_view);
-//        mWebView.getSettings().setJavaScriptEnabled(true);
-        mWebView.setWebViewClient(new CustomWebViewClient());
-        mWebView.getSettings().setUserAgentString("AppleWebkit/534.30 (KHTML, like Gecko) Version/4.0 Mobile Safari/534.30");
-        mWebView.loadUrl("http://groupedirectouest.com");
-    }
-}
+        final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        mViewPager = (ViewPager) findViewById(R.id.pager);
+        mViewPager.setAdapter(mDemoCollectionPagerAdapter);
 
-class CustomWebViewClient extends WebViewClient {
+        mViewPager = (ViewPager) findViewById(R.id.pager);
+        mViewPager.setOnPageChangeListener(
+                new ViewPager.SimpleOnPageChangeListener() {
+                    @Override
+                    public void onPageSelected(int position) {
+                        // When swiping between pages, select the
+                        // corresponding tab.
+                        getSupportActionBar().setSelectedNavigationItem(position);
+                    }
+                });
+
+            // Add 3 tabs, specifying the tab's text and TabListener
+        for (int i = 0; i < 2; i++) {
+            actionBar.addTab(
+                    actionBar.newTab()
+                            .setText("Tab " + (i + 1))
+                            .setTabListener(this));
+        }
+        mDemoCollectionPagerAdapter =
+                new PagerAdapter(
+                        getSupportFragmentManager());
+    }
 
     @Override
-    public boolean shouldOverrideUrlLoading(WebView view, String url) {
-        view.loadUrl(url);
-        return true;
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
+        
+
+    }
+
+    @Override
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
+
+    }
+
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
+        System.out.println("that");
+
+    }
+
+    class PagerAdapter extends FragmentStatePagerAdapter {
+        public PagerAdapter(FragmentManager fm) {
+            super(fm);
+        }
+
+        @Override
+        public Fragment getItem(int num) {
+            mFragment = new Fragment();
+            switch (num) {
+                case 0:
+                    mFragment = new MainTab();
+                    break;
+                case 1:
+                    mFragment = new WebViewFragment();
+                    break;
+                default:
+                    mFragment = new MainTab();
+            }
+            return mFragment;
+        }
+
+        @Override
+        public int getCount() {
+            return 2;
+        }
+
+        @Override
+        public CharSequence getPageTitle(int position) {
+            return "OBJECT " + (position + 1);
+        }
     }
 }
