@@ -26,8 +26,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(mDemoCollectionPagerAdapter);
-
         mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setOnPageChangeListener(
                 new ViewPager.SimpleOnPageChangeListener() {
@@ -39,7 +37,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
                     }
                 });
 
-            // Add 3 tabs, specifying the tab's text and TabListener
         for (int i = 0; i < 2; i++) {
             actionBar.addTab(
                     actionBar.newTab()
@@ -49,11 +46,12 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         mDemoCollectionPagerAdapter =
                 new PagerAdapter(
                         getSupportFragmentManager());
+        mViewPager.setAdapter(mDemoCollectionPagerAdapter);
     }
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-        
+
 
     }
 
