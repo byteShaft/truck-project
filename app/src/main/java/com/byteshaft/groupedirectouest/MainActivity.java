@@ -40,11 +40,22 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         for (int i = 0; i < 2; i++) {
             actionBar.addTab(
                     actionBar.newTab()
-                            .setText("Tab " + (i + 1))
+                            .setText(setTabTitle(i + 1))
                             .setTabListener(this));
         }
         mDemoCollectionPagerAdapter = new PagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mDemoCollectionPagerAdapter);
+    }
+
+    private String setTabTitle(int position) {
+        switch (position) {
+            case 1:
+                return "MainView";
+            case 2:
+                return "webView";
+            default:
+                return "MainView";
+        }
     }
 
     @Override
