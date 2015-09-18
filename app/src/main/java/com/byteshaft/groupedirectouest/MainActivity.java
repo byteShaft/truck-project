@@ -43,9 +43,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
                             .setText("Tab " + (i + 1))
                             .setTabListener(this));
         }
-        mDemoCollectionPagerAdapter =
-                new PagerAdapter(
-                        getSupportFragmentManager());
+        mDemoCollectionPagerAdapter = new PagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mDemoCollectionPagerAdapter);
     }
 
