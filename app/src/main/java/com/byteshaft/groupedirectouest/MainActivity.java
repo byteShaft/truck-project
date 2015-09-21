@@ -18,7 +18,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     private ViewPager mViewPager;
     private Fragment mFragment;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,8 +30,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
                 new ViewPager.SimpleOnPageChangeListener() {
                     @Override
                     public void onPageSelected(int position) {
-                        // When swiping between pages, select the
-                        // corresponding tab.
                         getSupportActionBar().setSelectedNavigationItem(position);
                     }
                 });
@@ -40,11 +37,23 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         for (int i = 0; i < 2; i++) {
             actionBar.addTab(
                     actionBar.newTab()
+                            .setCustomView(getLayout(i+1))
                             .setText(setTabTitle(i + 1))
                             .setTabListener(this));
         }
         mDemoCollectionPagerAdapter = new PagerAdapter(getSupportFragmentManager());
         mViewPager.setAdapter(mDemoCollectionPagerAdapter);
+    }
+
+    private int getLayout(int value) {
+        switch (value) {
+            case 1:
+                return R.layout.custom_truck_tab;
+            case 2:
+                return R.layout.infolayout;
+            default:
+                return R.layout.custom_truck_tab;
+        }
     }
 
     private String setTabTitle(int position) {
@@ -74,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     }
 
     class PagerAdapter extends FragmentStatePagerAdapter {
+
         public PagerAdapter(FragmentManager fm) {
             super(fm);
         }

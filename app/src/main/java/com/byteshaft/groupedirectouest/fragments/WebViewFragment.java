@@ -18,8 +18,7 @@ public class WebViewFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         // The last two arguments ensure LayoutParams are inflated
         // properly.
-        View rootView = inflater.inflate(
-                R.layout.webviewfragment, container, false);
+        View rootView = inflater.inflate(R.layout.webviewfragment, container, false);
         return rootView;
     }
 
