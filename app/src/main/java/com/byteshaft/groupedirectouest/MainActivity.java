@@ -25,7 +25,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         final android.support.v7.app.ActionBar actionBar = getSupportActionBar();
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
         mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager = (ViewPager) findViewById(R.id.pager);
         mViewPager.setOnPageChangeListener(
                 new ViewPager.SimpleOnPageChangeListener() {
                     @Override
