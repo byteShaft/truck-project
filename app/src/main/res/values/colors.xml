@@ -2,4 +2,5 @@
 <resources>
     <color name="transparent">#3F3F3F</color>
     <color name="transparentColor">#803F3F3F</color>
+    <color name="buttonBackground">#2A2A2A</color>
 </resources>
