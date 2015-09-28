@@ -14,11 +14,10 @@ import com.byteshaft.groupedirectouest.R;
 
 
 public class MainTab extends Fragment implements View.OnClickListener {
-
-    public static final String ARG_OBJECT = "Miantab";
+    
     private View mBaseView;
     private RelativeLayout mRelativeLayout;
-    private Button mButton;
+    public static Button mButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
@@ -43,6 +42,7 @@ public class MainTab extends Fragment implements View.OnClickListener {
                 transaction.replace(getView().getId(), newFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
+                mButton.setVisibility(View.INVISIBLE);
                 break;
         }
 

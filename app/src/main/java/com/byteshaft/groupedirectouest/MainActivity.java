@@ -8,7 +8,9 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 
+import com.byteshaft.groupedirectouest.fragments.FormFragment;
 import com.byteshaft.groupedirectouest.fragments.MainTab;
 import com.byteshaft.groupedirectouest.fragments.WebViewFragment;
 
@@ -79,6 +81,15 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     @Override
     public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
 
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (FormFragment.formLayoutShown) {
+            MainTab.mButton.setVisibility(View.VISIBLE);
+            FormFragment.formLayoutShown = false;
+        }
     }
 
     class PagerAdapter extends FragmentStatePagerAdapter {
