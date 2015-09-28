@@ -1,4 +1,4 @@
-package com.byteshaft.groupedirectouest;
+package com.byteshaft.groupedirectouest.location;
 
 import android.app.Service;
 import android.content.BroadcastReceiver;
@@ -12,6 +12,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.byteshaft.groupedirectouest.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationRequest;

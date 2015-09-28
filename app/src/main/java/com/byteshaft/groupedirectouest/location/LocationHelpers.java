@@ -1,4 +1,4 @@
-package com.byteshaft.groupedirectouest;
+package com.byteshaft.groupedirectouest.location;
 
 
 import android.app.AlarmManager;
