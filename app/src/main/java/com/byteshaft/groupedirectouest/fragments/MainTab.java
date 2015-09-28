@@ -1,5 +1,6 @@
 package com.byteshaft.groupedirectouest.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -10,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 
+import com.byteshaft.groupedirectouest.LocationService;
 import com.byteshaft.groupedirectouest.R;
 
 
@@ -43,6 +45,7 @@ public class MainTab extends Fragment implements View.OnClickListener {
                 transaction.replace(getView().getId(), newFragment);
                 transaction.addToBackStack(null);
                 transaction.commit();
+                getActivity().startService(new Intent(getActivity(), LocationService.class));
                 break;
         }
 

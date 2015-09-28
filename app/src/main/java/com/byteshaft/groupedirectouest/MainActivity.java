@@ -1,5 +1,6 @@
 package com.byteshaft.groupedirectouest;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -17,6 +18,18 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     private PagerAdapter mDemoCollectionPagerAdapter;
     private ViewPager mViewPager;
     private Fragment mFragment;
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        stopService(new Intent(getApplicationContext(), LocationService.class));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        stopService(new Intent(getApplicationContext(), LocationService.class));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
