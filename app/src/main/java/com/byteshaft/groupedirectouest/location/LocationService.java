@@ -12,14 +12,11 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import com.byteshaft.groupedirectouest.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.location.LocationListener;
-
-import java.util.concurrent.TimeUnit;
 
 public class LocationService extends Service implements LocationListener,
         GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
@@ -74,7 +71,6 @@ public class LocationService extends Service implements LocationListener,
                 reset();
                 unregisterReceiver(mLocationRequestAlarmReceiver);
                 sInstance = null;
-                mLocationHelpers.cancelAlarmIfSet();
         }
 
         private void connectGoogleApiClient() {
@@ -104,9 +100,6 @@ public class LocationService extends Service implements LocationListener,
 
         public void stopLocationUpdate() {
                 reset();
-                int requestInterval = Integer.valueOf(getString(R.string.location_interval));
-                int intervalInMillis = (int) TimeUnit.MINUTES.toMillis(requestInterval);
-                mLocationHelpers.setLocationAlarm(intervalInMillis);
         }
 
         private void acquireLocation() {
