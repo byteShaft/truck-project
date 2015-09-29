@@ -33,6 +33,7 @@ public class MainTab extends Fragment implements View.OnClickListener {
         mButton.setOnClickListener(this);
         FragmentManager fm = getActivity().getSupportFragmentManager();
         fm.popBackStack();
+        locationHelpers.showGooglePlayServicesError();
         return mBaseView;
     }
 
@@ -62,6 +63,7 @@ public class MainTab extends Fragment implements View.OnClickListener {
                             transaction.addToBackStack(null);
                             transaction.commit();
                             locationService = new LocationService(getContext());
+                            locationService.locationTimer().start();
                         }
                     });
                     alertDialog.show();

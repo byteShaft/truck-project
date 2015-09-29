@@ -6,6 +6,8 @@ import android.location.Location;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.util.Log;
+import android.widget.Toast;
+
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -77,6 +79,7 @@ public class LocationService extends ContextWrapper implements LocationListener,
             String lon = String.valueOf(mLocation.getLongitude());
             Log.i("Location", lat + ", " + lon);
             stopLocationService();
+            Toast.makeText(getApplicationContext(), "Location Aquired", Toast.LENGTH_SHORT).show();
             mLocationChangedCounter = 0;
         }
     }
