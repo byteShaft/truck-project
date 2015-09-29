@@ -47,7 +47,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             actionBar.addTab(
                     actionBar.newTab()
                             .setCustomView(getLayout(i+1))
-                            .setText(setTabTitle(i + 1))
                             .setTabListener(this));
         }
         mDemoCollectionPagerAdapter = new PagerAdapter(getSupportFragmentManager());
@@ -65,16 +64,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         }
     }
 
-    private String setTabTitle(int position) {
-        switch (position) {
-            case 1:
-                return "MainView";
-            case 2:
-                return "webView";
-            default:
-                return "MainView";
-        }
-    }
 
     @Override
     public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
