@@ -9,24 +9,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.RelativeLayout;
 
-import com.byteshaft.groupedirectouest.location.LocationService;
 import com.byteshaft.groupedirectouest.R;
+import com.byteshaft.groupedirectouest.location.LocationService;
 
 
 public class MainTab extends Fragment implements View.OnClickListener {
     
     private View mBaseView;
-    private RelativeLayout mRelativeLayout;
     public static Button mButton;
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         mBaseView= inflater.inflate(R.layout.mainview, container, false);
-        mRelativeLayout = (RelativeLayout) mBaseView.findViewById(R.id.tuckRelativeLayout);
-        mRelativeLayout.setBackgroundDrawable(getResources().getDrawable(R.drawable.gdo));
         mButton = (Button) mBaseView.findViewById(R.id.button);
         mButton.setOnClickListener(this);
         FragmentManager fm = getActivity().getSupportFragmentManager();
