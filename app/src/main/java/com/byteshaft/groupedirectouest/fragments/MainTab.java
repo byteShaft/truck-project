@@ -12,9 +12,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.byteshaft.groupedirectouest.R;
 import com.byteshaft.groupedirectouest.location.LocationHelpers;
 import com.byteshaft.groupedirectouest.location.LocationService;
+import com.byteshaft.groupedirectouest.R;
 
 
 public class MainTab extends Fragment implements View.OnClickListener {
@@ -34,7 +34,9 @@ public class MainTab extends Fragment implements View.OnClickListener {
         mButton.setOnClickListener(this);
         FragmentManager fm = getActivity().getSupportFragmentManager();
         fm.popBackStack();
-        locationHelpers.showGooglePlayServicesError();
+        if (!locationHelpers.playServicesAvailable(getActivity())) {
+            locationHelpers.showGooglePlayServicesError(getActivity());
+        }
         return mBaseView;
     }
 
@@ -42,7 +44,7 @@ public class MainTab extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button:
-                if (!locationHelpers.isAnyLocationServiceAvailable()) {
+                if (locationHelpers.playServicesAvailable(getActivity()) && !locationHelpers.isAnyLocationServiceAvailable()) {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
                     alertDialog.setTitle("Location Service disabled");
                     alertDialog.setMessage("Want to enable?");
