@@ -14,7 +14,6 @@ import android.view.View;
 import com.byteshaft.groupedirectouest.fragments.FormFragment;
 import com.byteshaft.groupedirectouest.fragments.MainTab;
 import com.byteshaft.groupedirectouest.fragments.WebViewFragment;
-import com.byteshaft.groupedirectouest.location.LocationService;
 
 public class MainActivity extends AppCompatActivity implements ActionBar.TabListener {
 
@@ -25,7 +24,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
     @Override
     protected void onPause() {
         super.onPause();
-        stopService(new Intent(getApplicationContext(), LocationService.class));
     }
 
     @Override
@@ -87,7 +85,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             MainTab.mButton.setVisibility(View.VISIBLE);
             FormFragment.formLayoutShown = false;
         }
-        stopService(new Intent(getApplicationContext(), LocationService.class));
     }
 
     class PagerAdapter extends FragmentStatePagerAdapter {

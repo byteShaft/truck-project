@@ -42,16 +42,11 @@ public class FormFragment extends Fragment implements View.OnClickListener {
     private EditText messageEditText;
     private Button buttonSubmit;
     private DefaultHttpClient mHttpClient;
-    private AppGlobals appGlobals;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         formLayoutShown = true;
         mBaseView = inflater.inflate(R.layout.formlayout, container, false);
-        appGlobals = new AppGlobals();
-        if (!appGlobals.isAnyLocationServiceAvailable()) {
-            System.out.println("that");
-        }
         fullNameEditText = (EditText) mBaseView.findViewById(R.id.fullNameEditText);
         emailAddress = (EditText) mBaseView.findViewById(R.id.emailAddress);
         phoneNumberEditText = (EditText) mBaseView.findViewById(R.id.phoneNumberEditText);
