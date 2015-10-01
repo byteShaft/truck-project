@@ -12,6 +12,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.byteshaft.groupedirectouest.AppGlobals;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -43,8 +44,8 @@ public class LocationService extends Service implements LocationListener,
                         if (mLocation == null && mLocationRecursionCounter > 24) {
                                 mLocation = LocationServices.FusedLocationApi.getLastLocation(mGoogleApiClient);
                                 if (mLocation != null) {
-                                        String latitudeLast = LocationHelpers.getLatitudeAsString(mLocation);
-                                        String longitudeLast = LocationHelpers.getLongitudeAsString(mLocation);
+                                        AppGlobals.setLatitude(LocationHelpers.getLatitudeAsString(mLocation));
+                                        AppGlobals.setLongitude(LocationHelpers.getLongitudeAsString(mLocation));
 
                                         Log.w(LOG_TAG, "Failed to get location current location, saving last known location");
                                         stopLocationUpdate();
@@ -57,8 +58,8 @@ public class LocationService extends Service implements LocationListener,
                                 mLocationRecursionCounter++;
                                 Log.i(LOG_TAG, "Tracker Thread Running: " + mLocationRecursionCounter);
                         } else {
-                                String latitude = LocationHelpers.getLatitudeAsString(mLocation);
-                                String longitude = LocationHelpers.getLongitudeAsString(mLocation);
+                                AppGlobals.setLatitude(LocationHelpers.getLatitudeAsString(mLocation));
+                                AppGlobals.setLongitude(LocationHelpers.getLongitudeAsString(mLocation));
                                 stopLocationUpdate();
                         }
                 }
