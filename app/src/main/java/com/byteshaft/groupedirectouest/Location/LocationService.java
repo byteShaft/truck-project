@@ -1,4 +1,4 @@
-package com.byteshaft.groupedirectouest.Location;
+package com.byteshaft.groupedirectouest.location;
 
 import android.content.Context;
 import android.content.ContextWrapper;

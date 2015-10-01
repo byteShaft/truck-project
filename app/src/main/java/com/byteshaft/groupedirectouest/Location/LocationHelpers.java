@@ -1,4 +1,4 @@
-package com.byteshaft.groupedirectouest.Location;
+package com.byteshaft.groupedirectouest.location;
 
 import android.app.AlertDialog;
 import android.content.Context;

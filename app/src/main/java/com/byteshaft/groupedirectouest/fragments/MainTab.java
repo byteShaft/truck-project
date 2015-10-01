@@ -12,8 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-import com.byteshaft.groupedirectouest.Location.LocationHelpers;
-import com.byteshaft.groupedirectouest.Location.LocationService;
+import com.byteshaft.groupedirectouest.location.LocationHelpers;
+import com.byteshaft.groupedirectouest.location.LocationService;
 import com.byteshaft.groupedirectouest.R;
 
 
