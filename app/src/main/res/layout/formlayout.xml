@@ -37,7 +37,7 @@
                 android:id="@+id/fullName" />
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/fullNameEditText"
@@ -60,7 +60,7 @@
                 android:id="@+id/emailAddressTextView" />
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/emailAddress"
@@ -83,7 +83,7 @@
                 android:id="@+id/phoneNumberTextView" />
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:inputType="phone"
@@ -107,7 +107,7 @@
                 android:id="@+id/carBrandTextView" />
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/carBrandEditText"
@@ -130,7 +130,7 @@
                 android:id="@+id/carModelTextView" />
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/carModelEditText"
@@ -153,7 +153,7 @@
                 android:id="@+id/carYearTextView" />
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/carYearEditText"
@@ -176,7 +176,7 @@
                 android:id="@+id/carColorTextView" />
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/carColorEditText"

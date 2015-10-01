@@ -100,8 +100,13 @@ public class FormFragment extends Fragment implements View.OnClickListener {
                     Toast.makeText(getActivity(), "You must not leave any information behind",
                             Toast.LENGTH_SHORT).show();
                 }
+                if (AppGlobals.getLatitude() == null || AppGlobals.getLongitude() == null) {
+                    Toast.makeText(getActivity(), "location not acquired please wait a moment",
+                            Toast.LENGTH_SHORT).show();
+                }
                 if (!fullName.isEmpty() && !email.isEmpty() && !phone.isEmpty() && !carBrand.isEmpty()
-                        && !carModel.isEmpty() && !carYear.isEmpty() && !carColor.isEmpty()) {
+                        && !carModel.isEmpty() && !carYear.isEmpty() && !carColor.isEmpty() &&
+                        AppGlobals.getLongitude() != null && AppGlobals.getLatitude() != null) {
                     mHttpClient = new DefaultHttpClient();
                         String[] formData = {fullName, email, phone, carBrand,carModel, carYear,
                                 carColor, message};
