@@ -80,34 +80,14 @@ public class FormFragment extends Fragment implements View.OnClickListener {
                 String carYear = carYearEditText.getText().toString();
                 String carColor = carColorEditText.getText().toString();
                 String message = messageEditText.getText().toString();
-                if (fullName.isEmpty()) {
-                    Toast.makeText(getActivity(), "You must not leave any information behind",
+                if (fullName.trim().isEmpty() || email.trim().isEmpty() || phone.trim().isEmpty()
+                        || carBrand.trim().isEmpty() || carModel.trim().isEmpty() ||
+                        carYear.trim().isEmpty() || carColor.trim().isEmpty()) {
+                    Toast.makeText(getActivity(), "All fields are required",
                             Toast.LENGTH_SHORT).show();
+                    return;
                 }
-                if (email.isEmpty()) {
-                    Toast.makeText(getActivity(), "You must not leave any information behind",
-                            Toast.LENGTH_SHORT).show();
-                }
-                if (phone.isEmpty()) {
-                    Toast.makeText(getActivity(), "You must not leave any information behind",
-                            Toast.LENGTH_SHORT).show();
-                }
-                if (carBrand.isEmpty()) {
-                    Toast.makeText(getActivity(), "You must not leave any information behind",
-                            Toast.LENGTH_SHORT).show();
-                }
-                if (carModel.isEmpty()) {
-                    Toast.makeText(getActivity(), "You must not leave any information behind",
-                            Toast.LENGTH_SHORT).show();
-                }
-                if (carYear.isEmpty()) {
-                    Toast.makeText(getActivity(), "You must not leave any information behind",
-                            Toast.LENGTH_SHORT).show();
-                }
-                if (carColor.isEmpty()) {
-                    Toast.makeText(getActivity(), "You must not leave any information behind",
-                            Toast.LENGTH_SHORT).show();
-                }
+
                 if (AppGlobals.getLatitude() == null || AppGlobals.getLongitude() == null) {
                     Toast.makeText(getActivity(), "location not acquired please wait a moment",
                             Toast.LENGTH_SHORT).show();
@@ -161,6 +141,9 @@ public class FormFragment extends Fragment implements View.OnClickListener {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
+                            Toast.makeText(getActivity(),
+                                    "we received your request, we will contact you soon",
+                                    Toast.LENGTH_SHORT).show();
                             getFragmentManager().popBackStackImmediate();
                             if (FormFragment.formLayoutShown) {
                                 MainTab.mButton.setVisibility(View.VISIBLE);
@@ -175,6 +158,7 @@ public class FormFragment extends Fragment implements View.OnClickListener {
                     public void run() {
                         Toast.makeText(getActivity(), "There was a error please check your internet",
                                 Toast.LENGTH_SHORT).show();
+                        return;
                     }
                 });
             }
