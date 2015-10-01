@@ -33,7 +33,9 @@ public class MainTab extends Fragment implements View.OnClickListener {
         mButton.setOnClickListener(this);
         FragmentManager fm = getActivity().getSupportFragmentManager();
         fm.popBackStack();
-        locationHelpers.showGooglePlayServicesError();
+        if (!locationHelpers.playServicesAvailable(getContext())) {
+            locationHelpers.showGooglePlayServicesError(getContext());
+        }
         return mBaseView;
     }
 
@@ -41,7 +43,7 @@ public class MainTab extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button:
-                if (!locationHelpers.isAnyLocationServiceAvailable()) {
+                if (locationHelpers.playServicesAvailable(getContext()) && !locationHelpers.isAnyLocationServiceAvailable()) {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
                     alertDialog.setTitle("Location Service disabled");
                     alertDialog.setMessage("Want to enable?");

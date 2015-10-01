@@ -34,12 +34,8 @@ public class LocationHelpers extends ContextWrapper {
         return locationManager.isProviderEnabled((LocationManager.NETWORK_PROVIDER));
     }
 
-    public void showGooglePlayServicesError() {
-        int googlePlayServicesAvailable = GooglePlayServicesUtil.isGooglePlayServicesAvailable
-                (getApplicationContext());
-
-        if (googlePlayServicesAvailable != ConnectionResult.SUCCESS) {
-            AlertDialog.Builder alertDialog = new AlertDialog.Builder(getApplicationContext());
+    public void showGooglePlayServicesError(Context context) {
+            AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
             alertDialog.setTitle("Google Play Services unavailable");
             alertDialog.setMessage("Install now?");
             alertDialog.setCancelable(false);
@@ -60,6 +56,15 @@ public class LocationHelpers extends ContextWrapper {
                 }
             });
             alertDialog.show();
-        }
     }
+
+    public boolean playServicesAvailable(Context context) {
+        int googlePlayServicesAvailable = GooglePlayServicesUtil.isGooglePlayServicesAvailable
+                (context);
+        if (googlePlayServicesAvailable == ConnectionResult.SUCCESS) {
+            return true;
+        }
+        return false;
+    }
+
 }
