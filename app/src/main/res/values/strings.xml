@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">Groupe Direct Ouest</string>
+    <string name="tow_me">Tow Me</string>
+    <string name="fill_in">Fill-in the form</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
