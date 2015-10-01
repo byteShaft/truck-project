@@ -21,20 +21,21 @@ public class MainTab extends Fragment implements View.OnClickListener {
     
     private View mBaseView;
     public static Button mButton;
-    LocationHelpers locationHelpers;
-    LocationService locationService;
+    private LocationHelpers locationHelpers;
+    private LocationService locationService;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         mBaseView= inflater.inflate(R.layout.mainview, container, false);
-        locationHelpers = new LocationHelpers(getContext());
+        locationHelpers = new LocationHelpers(getActivity());
         mButton = (Button) mBaseView.findViewById(R.id.button);
         mButton.setOnClickListener(this);
         FragmentManager fm = getActivity().getSupportFragmentManager();
         fm.popBackStack();
-        if (!locationHelpers.playServicesAvailable(getContext())) {
-            locationHelpers.showGooglePlayServicesError(getContext());
+        if (!locationHelpers.playServicesAvailable(getActivity())) {
+            locationHelpers.showGooglePlayServicesError(getActivity());
         }
         return mBaseView;
     }
@@ -43,8 +44,8 @@ public class MainTab extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.button:
-                if (locationHelpers.playServicesAvailable(getContext()) && !locationHelpers.isAnyLocationServiceAvailable()) {
-                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(getContext());
+                if (locationHelpers.playServicesAvailable(getActivity()) && !locationHelpers.isAnyLocationServiceAvailable()) {
+                    AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
                     alertDialog.setTitle("Location Service disabled");
                     alertDialog.setMessage("Want to enable?");
                     alertDialog.setCancelable(false);
@@ -64,7 +65,7 @@ public class MainTab extends Fragment implements View.OnClickListener {
                             transaction.replace(getView().getId(), newFragment);
                             transaction.addToBackStack(null);
                             transaction.commit();
-                            locationService = new LocationService(getContext());
+                            locationService = new LocationService(getActivity());
                             locationService.locationTimer().start();
                         }
                     });
@@ -76,7 +77,7 @@ public class MainTab extends Fragment implements View.OnClickListener {
                     transaction.replace(getView().getId(), newFragment);
                     transaction.addToBackStack(null);
                     transaction.commit();
-                    locationService = new LocationService(getContext());
+                    locationService = new LocationService(getActivity());
                 }
                 break;
         }

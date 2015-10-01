@@ -37,11 +37,11 @@
                 android:id="@+id/fullName" />
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/fullNameEditText"
-                android:maxLength="20"
+                android:maxLength="30"
                 android:background="@android:drawable/editbox_background" />
         </LinearLayout>
 
@@ -55,16 +55,16 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textColor="@android:color/white"
+                android:inputType="textEmailAddress"
                 android:text="Email Address"
                 android:id="@+id/emailAddressTextView" />
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/emailAddress"
                 android:inputType="textEmailAddress"
-                android:maxLength="15"
                 android:background="@android:drawable/editbox_background" />
         </LinearLayout>
 
@@ -83,9 +83,10 @@
                 android:id="@+id/phoneNumberTextView" />
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
+                android:inputType="phone"
                 android:id="@+id/phoneNumberEditText"
                 android:maxLength="80"
                 android:background="@android:drawable/editbox_background" />
@@ -106,7 +107,7 @@
                 android:id="@+id/carBrandTextView" />
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/carBrandEditText"
@@ -129,7 +130,7 @@
                 android:id="@+id/carModelTextView" />
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/carModelEditText"
@@ -152,7 +153,7 @@
                 android:id="@+id/carYearTextView" />
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/carYearEditText"
@@ -175,7 +176,7 @@
                 android:id="@+id/carColorTextView" />
             <EditText
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/carColorEditText"
@@ -223,7 +224,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:textColor="@android:color/white"
-            android:background="@color/transparentColor"
+            android:background="@drawable/button_background"
             android:text="Submit"
             android:id="@+id/buttonSubmit"
             android:layout_gravity="center_horizontal" />

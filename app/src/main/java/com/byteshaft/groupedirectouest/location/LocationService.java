@@ -8,6 +8,7 @@ import android.os.CountDownTimer;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.byteshaft.groupedirectouest.AppGlobals;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.LocationListener;
@@ -73,11 +74,10 @@ public class LocationService extends ContextWrapper implements LocationListener,
     public void onLocationChanged(Location location) {
         Log.i("KidMonitor", "onLocationChanged CALLED..." + mLocationChangedCounter);
         mLocationChangedCounter++;
-        if (mLocationChangedCounter == 3) {
+        if (mLocationChangedCounter == 5) {
             mLocation = location;
-            String lat = String.valueOf(mLocation.getLatitude());
-            String lon = String.valueOf(mLocation.getLongitude());
-            Log.i("Location", lat + ", " + lon);
+            AppGlobals.setLatitude(String.valueOf(mLocation.getLatitude()));
+            AppGlobals.setLongitude(String.valueOf(mLocation.getLongitude()));
             stopLocationService();
             Toast.makeText(getApplicationContext(), "Location Aquired", Toast.LENGTH_SHORT).show();
             mLocationChangedCounter = 0;
