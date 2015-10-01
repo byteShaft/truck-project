@@ -38,6 +38,7 @@
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
+                android:singleLine="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/fullNameEditText"
@@ -61,6 +62,7 @@
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
+                android:singleLine="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/emailAddress"
@@ -84,6 +86,7 @@
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
+                android:singleLine="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:inputType="phone"
@@ -101,6 +104,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
+                android:singleLine="true"
                 android:textStyle="bold"
                 android:text="Car brand"
                 android:textColor="@android:color/white"
@@ -125,6 +129,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                android:singleLine="true"
                 android:text="Car model"
                 android:textColor="@android:color/white"
                 android:id="@+id/carModelTextView" />
@@ -154,6 +159,7 @@
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
+                android:singleLine="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/carYearEditText"
@@ -177,6 +183,7 @@
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="40dp"
+                android:singleLine="true"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:id="@+id/carColorEditText"

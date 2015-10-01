@@ -15,7 +15,6 @@ public class AppGlobals extends Application {
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
-
     }
 
     public static void setLatitude(String latti) {
