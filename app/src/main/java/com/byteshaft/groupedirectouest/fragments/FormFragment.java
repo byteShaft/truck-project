@@ -1,5 +1,6 @@
 package com.byteshaft.groupedirectouest.fragments;
 
+import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -47,6 +48,7 @@ public class FormFragment extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         formLayoutShown = true;
         mBaseView = inflater.inflate(R.layout.formlayout, container, false);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         fullNameEditText = (EditText) mBaseView.findViewById(R.id.fullNameEditText);
         emailAddress = (EditText) mBaseView.findViewById(R.id.emailAddress);
         phoneNumberEditText = (EditText) mBaseView.findViewById(R.id.phoneNumberEditText);
@@ -58,6 +60,12 @@ public class FormFragment extends Fragment implements View.OnClickListener {
         buttonSubmit = (Button) mBaseView.findViewById(R.id.buttonSubmit);
         buttonSubmit.setOnClickListener(this);
         return mBaseView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().setTitle(R.string.fill_in);
     }
 
     @Override

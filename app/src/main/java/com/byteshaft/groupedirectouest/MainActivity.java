@@ -82,6 +82,7 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         super.onBackPressed();
         if (FormFragment.formLayoutShown) {
             MainTab.mButton.setVisibility(View.VISIBLE);
+            setTitle(R.string.tow_me);
             FormFragment.formLayoutShown = false;
         }
     }

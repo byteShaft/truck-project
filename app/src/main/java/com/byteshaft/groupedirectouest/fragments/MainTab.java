@@ -3,6 +3,7 @@ package com.byteshaft.groupedirectouest.fragments;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -12,9 +13,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.byteshaft.groupedirectouest.R;
 import com.byteshaft.groupedirectouest.location.LocationHelpers;
 import com.byteshaft.groupedirectouest.location.LocationService;
-import com.byteshaft.groupedirectouest.R;
 
 
 public class MainTab extends Fragment implements View.OnClickListener {
@@ -24,11 +25,11 @@ public class MainTab extends Fragment implements View.OnClickListener {
     private LocationHelpers locationHelpers;
     private LocationService locationService;
 
-
     @Override
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         mBaseView= inflater.inflate(R.layout.mainview, container, false);
+        getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         locationHelpers = new LocationHelpers(getActivity());
         mButton = (Button) mBaseView.findViewById(R.id.button);
         mButton.setOnClickListener(this);
@@ -38,6 +39,12 @@ public class MainTab extends Fragment implements View.OnClickListener {
             locationHelpers.showGooglePlayServicesError(getActivity());
         }
         return mBaseView;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getActivity().setTitle(R.string.tow_me);
     }
 
     @Override
