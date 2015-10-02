@@ -19,4 +19,17 @@
     <string name="about_gdo">About GDO</string>
     <string name="tow_me_now">Tow Me Now</string>
     <string name="tow">Tow Me</string>
+    <string name="all_fields_required">All fields are required</string>
+    <string name="location_not_acquired">location not acquired please wait a moment</string>
+    <string name="request_received">we received your request, we will contact you soon</string>
+    <string name="internet_error">There was a error please check your internet</string>
+    <string name="location_acquired">Location Acquired</string>
+    <string name="services_unavailable">Google Play Services unavailable</string>
+    <string name="install_now">Install now?</string>
+    <string name="location_disabled">Location Service disabled</string>
+    <string name="want_to_enable">Want to enable?</string>
+    <string name="yes">Yes</string>
+    <string name="skip">Skip</string>
+    <string name="ok">Ok</string>
+    <string name="later">Later</string>
 </resources>
