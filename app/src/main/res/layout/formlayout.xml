@@ -32,7 +32,7 @@
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
-                android:text="Full Name"
+                android:text="@string/fullname"
                 android:textColor="@android:color/white"
                 android:id="@+id/fullName" />
             <EditText
@@ -57,7 +57,7 @@
                 android:textSize="20sp"
                 android:textColor="@android:color/white"
                 android:inputType="textEmailAddress"
-                android:text="Email Address"
+                android:text="@string/email_address"
                 android:id="@+id/emailAddressTextView" />
             <EditText
                 android:layout_width="fill_parent"
@@ -81,7 +81,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
-                android:text="Phone Number"
+                android:text="@string/phone_number"
                 android:id="@+id/phoneNumberTextView" />
             <EditText
                 android:layout_width="fill_parent"
@@ -106,7 +106,7 @@
                 android:textSize="20sp"
                 android:singleLine="true"
                 android:textStyle="bold"
-                android:text="Car brand"
+                android:text="@string/car_brand"
                 android:textColor="@android:color/white"
                 android:id="@+id/carBrandTextView" />
             <EditText
@@ -130,7 +130,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:singleLine="true"
-                android:text="Car model"
+                android:text="@string/car_model"
                 android:textColor="@android:color/white"
                 android:id="@+id/carModelTextView" />
             <EditText
@@ -153,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:text="Car year"
+                android:text="@string/car_year"
                 android:textColor="@android:color/white"
                 android:id="@+id/carYearTextView" />
             <EditText
@@ -178,7 +178,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="20sp"
                 android:textStyle="bold"
-                android:text="Car color"
+                android:text="@string/car_color"
                 android:textColor="@android:color/white"
                 android:id="@+id/carColorTextView" />
             <EditText
@@ -204,7 +204,7 @@
                 android:textSize="20sp"
                 android:textStyle="bold"
                 android:textColor="@android:color/white"
-                android:text="Message (if needed)"
+                android:text="@string/msg"
                 android:id="@+id/messageTextView" />
             <EditText
                 android:id="@+id/messageEditText"
@@ -233,7 +233,7 @@
             android:layout_margin="5dp"
             android:textColor="@android:color/white"
             android:background="@drawable/button_background"
-            android:text="Submit"
+            android:text="@string/submit"
             android:id="@+id/buttonSubmit"
             android:layout_gravity="center_horizontal" />
         </LinearLayout>

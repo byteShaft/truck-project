@@ -11,7 +11,7 @@
         android:layout_height="100dp"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="Tow Me Now"
+        android:text="@string/tow_me_now"
         android:background="@drawable/button_background"
         android:textColor="@android:color/white"
         android:id="@+id/button"
