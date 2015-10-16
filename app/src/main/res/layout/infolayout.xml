@@ -11,7 +11,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:layout_width="80dp"
+        android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:text="@string/about_gdo"
         android:textColor="#FF0000"
