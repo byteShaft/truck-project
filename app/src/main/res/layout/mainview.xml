@@ -3,15 +3,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/tuckRelativeLayout"
-    android:background="@drawable/gdo"
-    >
+    android:background="@drawable/gdo">
 
     <Button
         android:layout_width="200dp"
         android:layout_height="100dp"
         android:textSize="20sp"
         android:textStyle="bold"
-        android:text="Tow Me Now"
         android:background="@drawable/button_background"
         android:textColor="@android:color/white"
         android:id="@+id/button"

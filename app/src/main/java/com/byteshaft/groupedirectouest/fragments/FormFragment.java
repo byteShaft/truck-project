@@ -83,13 +83,13 @@ public class FormFragment extends Fragment implements View.OnClickListener {
                 if (fullName.trim().isEmpty() || email.trim().isEmpty() || phone.trim().isEmpty()
                         || carBrand.trim().isEmpty() || carModel.trim().isEmpty() ||
                         carYear.trim().isEmpty() || carColor.trim().isEmpty()) {
-                    Toast.makeText(getActivity(), "All fields are required",
+                    Toast.makeText(getActivity(), R.string.all_fields_required,
                             Toast.LENGTH_SHORT).show();
                     return;
                 }
 
                 if (AppGlobals.getLatitude() == null || AppGlobals.getLongitude() == null) {
-                    Toast.makeText(getActivity(), "location not acquired please wait a moment",
+                    Toast.makeText(getActivity(), R.string.location_not_acquired,
                             Toast.LENGTH_SHORT).show();
                 }
                 if (!fullName.isEmpty() && !email.isEmpty() && !phone.isEmpty() && !carBrand.isEmpty()
@@ -136,13 +136,13 @@ public class FormFragment extends Fragment implements View.OnClickListener {
             String responseString = null;
             try {
                 responseString = EntityUtils.toString(r_entity).trim();
-                System.out.println(responseString.equals("OK"));
-                if (responseString.equals("OK")) {
+                System.out.println(responseString.equals(R.string.ok));
+                if (responseString.equals(R.string.ok)) {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
                             Toast.makeText(getActivity(),
-                                    "we received your request, we will contact you soon",
+                                    R.string.request_received,
                                     Toast.LENGTH_SHORT).show();
                             getFragmentManager().popBackStackImmediate();
                             if (FormFragment.formLayoutShown) {
@@ -156,7 +156,7 @@ public class FormFragment extends Fragment implements View.OnClickListener {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getActivity(), "There was a error please check your internet",
+                        Toast.makeText(getActivity(), R.string.internet_error,
                                 Toast.LENGTH_SHORT).show();
                         return;
                     }
@@ -179,7 +179,7 @@ public class FormFragment extends Fragment implements View.OnClickListener {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getActivity(), "There was a error please check your internet",
+                        Toast.makeText(getActivity(), R.string.internet_error,
                                 Toast.LENGTH_SHORT).show();
                     }
                 });

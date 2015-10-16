@@ -32,6 +32,7 @@ public class MainTab extends Fragment implements View.OnClickListener {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         locationHelpers = new LocationHelpers(getActivity());
         mButton = (Button) mBaseView.findViewById(R.id.button);
+        mButton.setText(R.string.tow_me_now);
         mButton.setOnClickListener(this);
         FragmentManager fm = getActivity().getSupportFragmentManager();
         fm.popBackStack();
@@ -53,17 +54,17 @@ public class MainTab extends Fragment implements View.OnClickListener {
             case R.id.button:
                 if (locationHelpers.playServicesAvailable(getActivity()) && !locationHelpers.isAnyLocationServiceAvailable()) {
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(getActivity());
-                    alertDialog.setTitle("Location Service disabled");
-                    alertDialog.setMessage("Want to enable?");
+                    alertDialog.setTitle(R.string.location_disabled);
+                    alertDialog.setMessage(R.string.want_to_enable);
                     alertDialog.setCancelable(false);
-                    alertDialog.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    alertDialog.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             Intent intent = new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS);
                             startActivity(intent);
                         }
                     });
-                    alertDialog.setNegativeButton("Skip", new DialogInterface.OnClickListener() {
+                    alertDialog.setNegativeButton(R.string.skip, new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
                             mButton.setVisibility(View.INVISIBLE);

@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.location.LocationManager;
 import android.net.Uri;
 
+import com.byteshaft.groupedirectouest.R;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GooglePlayServicesUtil;
 
@@ -36,10 +37,10 @@ public class LocationHelpers extends ContextWrapper {
 
     public void showGooglePlayServicesError(Context context) {
             AlertDialog.Builder alertDialog = new AlertDialog.Builder(context);
-            alertDialog.setTitle("Google Play Services unavailable");
-            alertDialog.setMessage("Install now?");
+            alertDialog.setTitle(R.string.services_unavailable);
+            alertDialog.setMessage(R.string.install_now);
             alertDialog.setCancelable(false);
-            alertDialog.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+            alertDialog.setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     Intent intent = new Intent();
@@ -49,7 +50,7 @@ public class LocationHelpers extends ContextWrapper {
                     startActivity(intent);
                 }
             });
-            alertDialog.setNegativeButton("Later", new DialogInterface.OnClickListener() {
+            alertDialog.setNegativeButton(R.string.later, new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
 
