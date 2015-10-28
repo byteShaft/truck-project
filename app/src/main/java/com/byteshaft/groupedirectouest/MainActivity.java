@@ -94,7 +94,6 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
         } else {
             super.onBackPressed();
             WebViewFragment.sWebViewOpen = false;
-
         }
     }
 
