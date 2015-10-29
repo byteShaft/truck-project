@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -27,30 +28,16 @@ public class WebViewFragment extends Fragment {
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         sWebView = (WebView) mBaseView.findViewById(R.id.web_view);
         String uri = "http://groupedirectouest.com/";
-        sWebView.setWebViewClient(new MyWebViewClient());
+        sWebView.setWebViewClient(new WebViewClient());
+        sWebView.setWebChromeClient(new MyWebViewClient());
         sWebView.getSettings().setJavaScriptEnabled(true);
         sWebView.loadUrl(uri);
         sWebViewOpen = true;
         return mBaseView;
     }
 
-    class MyWebViewClient extends WebViewClient {
-        @Override
-        public boolean shouldOverrideUrlLoading(WebView view, String url) {
-                view.loadUrl(url);
-                return true;
-        }
-
-//        public void openFileChooser(ValueCallback<Uri> uploadMsg) {
-//
-//
-//            mUploadMessage = uploadMsg;
-//            Intent i = new Intent(Intent.ACTION_GET_CONTENT);
-//            i.addCategory(Intent.CATEGORY_OPENABLE);
-//            i.setType("image/*");
-//            MyWb.this.startActivityForResult(Intent.createChooser(i, "File Chooser"), FILECHOOSER_RESULTCODE);
-//
-//        }
+    class MyWebViewClient extends WebChromeClient {
+        
     }
 
 }
