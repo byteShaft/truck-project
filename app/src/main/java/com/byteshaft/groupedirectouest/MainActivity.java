@@ -79,11 +79,21 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
         if (FormFragment.formLayoutShown) {
             MainTab.mButton.setVisibility(View.VISIBLE);
             setTitle(R.string.tow_me);
             FormFragment.formLayoutShown = false;
+        }
+        if (WebViewFragment.sWebViewOpen && mViewPager.getCurrentItem() == 1) {
+            if (WebViewFragment.sWebView.canGoBack()) {
+                WebViewFragment.sWebView.goBack();
+            } else {
+                super.onBackPressed();
+                WebViewFragment.sWebViewOpen = false;
+            }
+        } else {
+            super.onBackPressed();
+            WebViewFragment.sWebViewOpen = false;
         }
     }
 
