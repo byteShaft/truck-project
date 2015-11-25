@@ -85,8 +85,8 @@ public class MainActivity extends AppCompatActivity implements ActionBar.TabList
             FormFragment.formLayoutShown = false;
         }
         if (WebViewFragment.sWebViewOpen && mViewPager.getCurrentItem() == 1) {
-            if (WebViewFragment.sWebView.canGoBack()) {
-                WebViewFragment.sWebView.goBack();
+            if (WebViewFragment.mWebView.canGoBack()) {
+                WebViewFragment.mWebView.goBack();
             } else {
                 super.onBackPressed();
                 WebViewFragment.sWebViewOpen = false;
