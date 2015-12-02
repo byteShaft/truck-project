@@ -1,10 +1,12 @@
 package com.byteshaft.groupedirectouest.fragments;
 
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.pm.ActivityInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +29,8 @@ import org.apache.http.util.EntityUtils;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 
 public class FormFragment extends Fragment implements View.OnClickListener {
@@ -43,6 +47,8 @@ public class FormFragment extends Fragment implements View.OnClickListener {
     private EditText messageEditText;
     private Button buttonSubmit;
     private DefaultHttpClient mHttpClient;
+    private boolean uploaded = false;
+    private ProgressDialog mProgressDialog;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -99,6 +105,7 @@ public class FormFragment extends Fragment implements View.OnClickListener {
                         String[] formData = {fullName, email, phone, carBrand,carModel, carYear,
                                 carColor, message};
                     new SendFormDataToServer().execute(formData);
+
                 }
                 break;
         }
@@ -134,21 +141,16 @@ public class FormFragment extends Fragment implements View.OnClickListener {
         public Object handleResponse(HttpResponse response) {
             HttpEntity r_entity = response.getEntity();
             String responseString = null;
+
             try {
                 responseString = EntityUtils.toString(r_entity).trim();
-                System.out.println(responseString.equals(R.string.ok));
-                if (responseString.equals(R.string.ok)) {
+                mProgressDialog.dismiss();
+                System.out.println(responseString.contains("OK"));
+                if (responseString.contains("OK")) {
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getActivity(),
-                                    R.string.request_received,
-                                    Toast.LENGTH_SHORT).show();
-                            getFragmentManager().popBackStackImmediate();
-                            if (FormFragment.formLayoutShown) {
-                                MainTab.mButton.setVisibility(View.VISIBLE);
-                                FormFragment.formLayoutShown = false;
-                            }
+                            alertDialog();
                         }
                     });
                 }
@@ -162,25 +164,79 @@ public class FormFragment extends Fragment implements View.OnClickListener {
                     }
                 });
             }
-            Log.d("UPLOAD", responseString);
+//            Log.d("UPLOAD", responseString);
 
             return null;
+        }
+
+        public void alertDialog() {
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(getActivity());
+            alertDialogBuilder.setTitle("Confirmation");
+            alertDialogBuilder
+                    .setMessage(R.string.request_received)
+                    .setIcon(getResources().getDrawable(R.drawable.confirm))
+                    .setCancelable(false)
+                    .setPositiveButton("Ok", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            getFragmentManager().popBackStackImmediate();
+                            if (FormFragment.formLayoutShown) {
+                                MainTab.mButton.setVisibility(View.VISIBLE);
+                                FormFragment.formLayoutShown = false;
+                            }
+                        }
+                    });
+            AlertDialog alertDialog = alertDialogBuilder.create();
+            alertDialog.show();
         }
     }
 
     class SendFormDataToServer extends AsyncTask<String, Void, Void> {
 
+        public boolean isInternetWorking() {
+            boolean success = false;
+            try {
+                URL url = new URL("https://google.com");
+                HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+                connection.setConnectTimeout(10000);
+                connection.connect();
+                success = connection.getResponseCode() == 200;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return success;
+        }
+
         @Override
         protected Void doInBackground(String... params) {
-            try {
-                mHttpClient.execute(UploadDataToServer(params[0], params[1], params[2], params[3],
-                        params[4], params[5], params[6], params[7]),new UploadResponseHandler());
-            } catch (IOException e) {
+            System.out.println(isInternetWorking());
+            if (isInternetWorking()) {
                 getActivity().runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
-                        Toast.makeText(getActivity(), R.string.internet_error,
-                                Toast.LENGTH_SHORT).show();
+                        mProgressDialog = new ProgressDialog(getActivity());
+                        mProgressDialog.setMessage("Processing");
+                        mProgressDialog.setIndeterminate(false);
+                        mProgressDialog.setCancelable(false);
+                        mProgressDialog.show();
+                    }
+                });
+                try {
+                    mHttpClient.execute(UploadDataToServer(params[0], params[1], params[2], params[3],
+                            params[4], params[5], params[6], params[7]), new UploadResponseHandler());
+                } catch (IOException e) {
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getActivity(), R.string.internet_error,
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            } else {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getActivity(), "Internet not available", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
